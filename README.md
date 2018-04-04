@@ -1,4 +1,4 @@
-#MQTT (beta)
+#MQTT (development)
 
 Module MQTT 
 
