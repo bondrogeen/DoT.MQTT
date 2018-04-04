@@ -1,0 +1,10 @@
+{
+  "run": true,
+  "device" : "",
+  "port" : 1883,
+  "pass" : "",
+  "server" : "",
+  "login" : "",
+  "time" : "",
+  "topic":"/ESP00"
+}

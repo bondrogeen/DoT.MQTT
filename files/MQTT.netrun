@@ -1,0 +1,8 @@
+return function (t)
+ if t.run then
+ t.device = string.format("%x",node.chipid()*256):sub(0,6):upper()
+ 
+ dofile("MQTT.lua")(t)
+ end
+ return t.run
+end

@@ -1,0 +1,24 @@
+{
+  "name": "MQTT",
+  "type":"module",
+  "description": "Module MQTT.",
+  "beta":true,
+  "version": "0.0.1",
+  "homepage": "",
+  "page": "MQTT.html",
+  "repository": {
+   "type": "git",
+   "url": "https://github.com/bondrogeen/template.module"
+  },
+  "keywords": ["esp8266", "lua", "nodemcu", "webserver","MQTT"],
+  "author": {
+    "name":"bondrogeen",
+    "email":"bondrogee@gmail.com"
+  },
+  "native":{
+    "run":false,
+    "gpio":1
+  },
+  "license": "MIT",
+  "modules": ["file", "sjson", "wifi","mqtt"]
+}
