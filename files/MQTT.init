@@ -1,10 +1,7 @@
 {
-  "run": true,
-  "device" : "",
+  "run": false,
+  "server" : "",
   "port" : 1883,
   "pass" : "",
-  "server" : "",
-  "login" : "",
-  "time" : "",
-  "topic":"/ESP00"
+  "login" : ""
 }

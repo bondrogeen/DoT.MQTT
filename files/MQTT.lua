@@ -1,65 +1,51 @@
-local function init(t)
-m = mqtt.Client(s.device,120,s.login,s.pass)
-end
-
-function set_mqtt(top,val)
-m:publish(topic_start..top,val, 0, 0, function(client)end)
-end
-
-local reconnMqtt = tmr.create()
-reconnMqtt:register(6, tmr.ALARM_SEMI, function (t)
-  reconnMqtt:interval(5000);
-  print("MQTT: trying to connect to "..s.mqtt_server..":"..s.mqtt_port)
-  m:close()
-  mqtt_init (true)
-end)
-
-local publishMqtt = tmr.create()
-publishMqtt:register(s.mqtt_time*1000, tmr.ALARM_AUTO, function (t)
-set_mqtt("/sensors/light",adc.read(0))
-set_mqtt("/sensors/rssi",wifi.sta.getrssi())
-set_mqtt("/sensors/uptime",tmr.time())
-set_mqtt("/sensors/free_ram",node.heap())
-end)
-
-m:on("offline", function(client)
-print ("offline")
-publishMqtt:stop()
-reconnMqtt:start()
-m_init = false
-end)
-
-m:on("message",function (client, topic, data)
-  if data then print(topic..":"..data) end
-  if (topic==topic_start.."/data/temp")then
-    temp = data
-  end
-end)
-
-function mqtt_init (val)
+local function con(val)
  if val then
-  m:connect(s.mqtt_server, s.mqtt_port, 0, function(client)
+  print("MQTT: trying to connect to "..M.server..":"..M.port)
+  M.mqtt:connect(M.server,M.port,0,function(c)
   print("Connected to MQTT...")
-  m_init = true
-  publishMqtt:start()
-  client:subscribe(topic_start.."/data/*", 0, function(client) print("subscribe success") end)
-  set_mqtt("/data/temp","")
-  set_mqtt("/data/test","test")
+  M.start=true
+  M.timer:stop()
+  c:subscribe(M.topic.."command/*",0,function(c)print("subscribe success")end)
+  M.pub("command/in","")
  end,
- function(client, reason)
-  print("failed reason: " .. reason)
-  reconnMqtt:start()
+ function(c,r)
+  print("failed reason: "..tostring(r))
+  collectgarbage()
  end)
 else
- m:close()
+ M.mqtt:close()
+ M.start=false
+ print("Disconnected to MQTT")
 end
 end
 
-if (not m_init)then mqtt_init(true)end
+local function pub(t,v)
+ if M.start then
+  M.mqtt:publish(M.topic..t,v,0,0,function(c)end)
+ end
+end
 
-
+local function init()
+M.mqtt = mqtt.Client(M.id,120,M.login,M.pass)
+M.pub=pub
+M.timer = tmr.create()
+M.timer:register(5000,tmr.ALARM_AUTO,function(t)
+ dofile("MQTT.lua")({con=true})end)
+M.timer:interval(5000)
+M.start=false
+M.mqtt:on("offline",function(client)
+print("offline")
+M.timer:start()
+dofile("MQTT.lua")({con=true})
+end)
+M.mqtt:on("message",dofile("MQTT_mes.lua"))
+M.timer:start()
+end
 
 return function (t)
-
- return r
+ if t.init then init()end
+ if t.con then con(true)end
+ if t.discon then con(false)end
+ if t.status then r=M and M.start end
+ return tostring(r)
 end
