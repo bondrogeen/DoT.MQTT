@@ -3,7 +3,7 @@ return function (t)
   print("MQTT")
   M=t
   M.id = string.format("%x",node.chipid()*256):sub(0,6):upper()
-  M.topic = "/ESP"..M.id.."/"
+  M.topic = "/DOT"..M.id.."/"
   dofile("MQTT.lua")({init=true})
  end 
  return t.run

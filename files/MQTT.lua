@@ -5,8 +5,8 @@ local function con(val)
   print("Connected to MQTT...")
   M.start=true
   M.timer:stop()
-  c:subscribe(M.topic.."command/*",0,function(c)print("subscribe success")end)
-  M.pub("command/in","")
+  c:subscribe(M.topic.."+/comm/*",0,function(c)print("subscribe success")end)
+--  M.pub("comm/in","")
  end,
  function(c,r)
   print("failed reason: "..tostring(r))
@@ -21,7 +21,7 @@ end
 
 local function pub(t,v)
  if M.start then
-  M.mqtt:publish(M.topic..t,v,0,0,function(c)end)
+  M.mqtt:publish(M.topic..t,tostring(v),0,0,function(c)end)
  end
 end
 
