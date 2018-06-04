@@ -2,7 +2,7 @@
  "name": "MQTT",
  "type": "plugin",
  "description": "MQTT for DoT",
- "version": "0.0.4",
+ "version": "0.1.0",
  "homepage": "",
  "files": ["MQTT.init", "MQTT.info", "MQTT.lua", "MQTT.net", "MQTT.html","MQTT_mes.lua","MQTT.js"],
  "page": "",
@@ -44,6 +44,13 @@
    "val": "",
    "type": "text",
    "name": "Password"
+  }, {
+   "id": "timer",
+   "val": 60,
+   "type": "number",
+   "min": 5,
+   "max": 99999,
+   "name": "Interval(sec)"
   }
  ],
  "license": "MIT",

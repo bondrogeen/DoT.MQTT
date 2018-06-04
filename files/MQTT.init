@@ -3,5 +3,6 @@
   "server" : "",
   "port" : 1883,
   "pass" : "",
-  "login" : ""
+  "login" : "",
+  "timer" : 60
 }

@@ -1,9 +1,8 @@
 return function (t)
- if t.run and not M then
-  print("MQTT")
-  M=t
-  M.id = string.format("%x",node.chipid()*256):sub(0,6):upper()
-  M.topic = "/DOT"..M.id.."/"
+ if t.run and not _M then
+  _M=t
+  _M.id = string.format("%x",node.chipid()*256):sub(0,6):upper()
+  _M.topic = "/DoT-".._M.id.."/"
   dofile("MQTT.lua")({init=true})
  end 
  return t.run
