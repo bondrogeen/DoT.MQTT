@@ -5,8 +5,8 @@ local function con(val)
   print("Connected to MQTT...")
   _M.start=true
   _M.recon:stop()
-  c:subscribe(_M.topic.."+/comm/*",0,function(c)print("subscribe success")end)
-  _M.pub("comm/in","")
+  c:subscribe(_M.topic.."comm/*",0,function(c)print("subscribe success")end)
+--  _M.pub("comm/RC522_dev/relay","")
   _M.int:start()
  end,
  function(c,r)
