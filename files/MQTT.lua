@@ -6,8 +6,8 @@ local function con(val)
   _M.start=true
   _M.recon:stop()
   c:subscribe(_M.topic.."comm/*",0,function(c)print("subscribe success")end)
---  _M.pub("comm/RC522_dev/relay","")
   _M.int:start()
+  dofile("MQTT_sub.lua")(true)
  end,
  function(c,r)
   print("failed reason: "..tostring(r))
@@ -33,7 +33,7 @@ _M.recon=tmr.create()
 _M.recon:register(5000,tmr.ALARM_AUTO,function(t)dofile("MQTT.lua")({con=true})end)
 _M.recon:interval(5000)
 _M.int=tmr.create()
-_M.int:register(5000,tmr.ALARM_AUTO,function(t)_DoT:set() print("timer")end)
+_M.int:register(5000,tmr.ALARM_AUTO,function(t)_DoT:set()end)
 _M.int:interval(_M.timer*1000)
 _M.start=false
 _M.mqtt:on("offline",function(client)print("offline")_M.recon:start()_M.int:stop()dofile("MQTT.lua")({con=true})end)
