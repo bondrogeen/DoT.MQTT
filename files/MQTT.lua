@@ -20,9 +20,9 @@ else
 end
 end
 
-local function pub(t,v)
+local function pub(t,v,r)
  if _M.start then
-  _M.mqtt:publish(_M.topic..t,tostring(v),0,0,function(c)end)
+  _M.mqtt:publish((r and "/"..t or _M.topic..t),tostring(v),0,0,function(c)end)
  end
 end
 
