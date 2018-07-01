@@ -4,7 +4,7 @@
  "description": "MQTT for DoT",
  "version": "0.1.0",
  "homepage": "",
- "files": ["MQTT.init", "MQTT.info", "MQTT.lua", "MQTT.net", "MQTT.html","MQTT_mes.lua","MQTT_sub.lua","MQTT.js"],
+ "files": ["MQTT.init", "MQTT.info", "MQTT.lua", "MQTT_mes.lua", "MQTT_pub.lua", "MQTT_sub.lua", "MQTT.net", "MQTT.html","MQTT_mes.lua","MQTT_sub.lua","MQTT.js"],
  "page": "MQTT.html",
  "script": "MQTT.js",
  "img": "https://raw.githubusercontent.com/bondrogeen/MQTT/master/doc/logo.jpg",
