@@ -6,7 +6,7 @@ return function (c,t,d)
   local f,s,x = m:match("(.-)/"), m:match("/(.*)"),{}
   print(s,f)
   print(m)
-  if f and s and file.exists(f..".lua") then x[s]=d local o,j = pcall(dofile(f),x)
+  if f and s and file.exists(f..".lua") then x[s]=d local o,j = pcall(dofile(f..".lua"),x)
    _M:pub("comm/"..m,"")
    print(o,j)end
  end
