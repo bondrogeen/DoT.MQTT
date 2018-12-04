@@ -48,7 +48,7 @@
     <h1>Publish</h1>
     <div class="row">
      <div class="group s6">
-      <input id="topic" type="text" name="text" required=" " value="<?lua local x if _M then x='DoT-'.._M.id..'/' else x='topic/' end return(x)?>test">
+      <input id="topic" type="text" name="text" required=" " value="<?lua local x if _M then x=_M.id..'/' else x='topic/' end return(x)?>test">
       <label for="topic">Topic</label>
      </div>
      <div class="group s3">
