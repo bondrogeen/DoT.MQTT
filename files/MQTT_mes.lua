@@ -7,7 +7,7 @@ return function (c,t,d)
   print(s,f)
   print(m)
   if f and s and file.exists(f..".lua") then x[s]=d local o,j = pcall(dofile(f..".lua"),x)
-   _M:pub("comm/"..m,"")
+   if j then _M:pub("comm/"..m,"")end
    print(o,j)end
  end
  return r
