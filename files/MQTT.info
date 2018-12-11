@@ -44,6 +44,13 @@
    "val": "",
    "type": "text",
    "name": "Password"
+  }, {
+   "id": "timer",
+   "val": 60,
+   "type": "number",
+   "min": 60,
+   "max": 99999,
+   "name": "Interval(sec)"
   }
  ],
  "license": "MIT",

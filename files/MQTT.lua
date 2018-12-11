@@ -4,7 +4,7 @@ local function cbC(c)
   if _M.on then _M.on(c) else
    print("Connected")
    c:subscribe(_M.topic.."comm/*",0,function(c)print("subscribe success")end)
-   dofile("MQTT_sub.lua")(true)
+   dofile("MQTT_sub.lua")(_M.timer)
   end
 end
 
