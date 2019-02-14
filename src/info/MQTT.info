@@ -1,0 +1,58 @@
+{
+ "name": "MQTT",
+ "type": "plugin",
+ "description": "MQTT for DoT",
+ "version": "0.2.0",
+ "homepage": "",
+ "files": ["MQTT.init", "MQTT.info", "MQTT.lua", "MQTT_mes.lua", "MQTT_sub.lua", "MQTT_pub.lua", "MQTT.net", "MQTT.html","MQTT_mes.lua","MQTT_sub.lua","MQTT.js"],
+ "page": "MQTT.html",
+ "script": "MQTT.js",
+ "img": "https://raw.githubusercontent.com/bondrogeen/MQTT/master/doc/logo.jpg",
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/bondrogeen/MQTT"
+ },
+ "author": {
+  "name": "bondrogeen",
+  "email": "bondrogeen@gmail.com"
+ },
+ "native": [
+  {
+   "id": "run",
+   "val": false,
+   "type": "checkbox",
+   "name": "Run"
+  }, {
+   "id": "server",
+   "val": "",
+   "type": "text",
+   "name": "Server"
+  }, {
+   "id": "port",
+   "val": 1883,
+   "type": "number",
+   "min": 0,
+   "max": 99999,
+   "name": "Port"
+  }, {
+   "id": "login",
+   "val": "",
+   "type": "text",
+   "name": "Login"
+  }, {
+   "id": "pass",
+   "val": "",
+   "type": "text",
+   "name": "Password"
+  }, {
+   "id": "timer",
+   "val": 60,
+   "type": "number",
+   "min": 60,
+   "max": 99999,
+   "name": "Interval(sec)"
+  }
+ ],
+ "license": "MIT",
+ "modules": ["mqtt"]
+}

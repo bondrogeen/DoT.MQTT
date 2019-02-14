@@ -1,14 +1,1 @@
-return function (c,t,d)
- if d then
-  print(t..":"..d)
-  local m = t:match("/comm/(.*)")
-  if not m then return end
-  local f,s,x = m:match("(.-)/"), m:match("/(.*)"),{}
-  print(s,f)
-  print(m)
-  if f and s and file.exists(f..".lua") then x[s]=d local o,j = pcall(dofile(f..".lua"),x)
-   if j then _M:pub("comm/"..m,"")end
-   print(o,j)end
- end
- return r
-end
+return function(a,b,c)if c then local d,e=b:match("./(.-)/comm/(.*)")if d and e then if file.exists(d..".lua")then local f={}f[e]=c;local g,h=pcall(dofile(d..".lua"),f)if h then _M:pub(d.."/comm/"..e,"")end end end end;return r end

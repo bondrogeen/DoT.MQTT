@@ -1,8 +1,1 @@
-{
-  "run": false,
-  "server" : "",
-  "port" : 1883,
-  "pass" : "",
-  "timer" : 60,
-  "login" : ""
-}
+{"run":false,"server":"","port":1883,"pass":"","timer":60,"login":""}

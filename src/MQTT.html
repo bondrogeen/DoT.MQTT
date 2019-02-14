@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  //= template/head.html
+  <title>MQTT</title>
+  <style>
+
+
+  </style>
+</head>
+
+<body>
+  //= template/header.html
+
+  <div id="Modal" class="modal <?lua return( _M and 'hide' or '')?>">
+    <div class="m-cont">
+      <span class="close" onclick="document.getElementById('Modal').style.display='none';">&times;</span>
+      <div class="m-body">
+        <p>Plagin not started</p>
+      </div>
+      <div class="m-foo">
+        <button id="close" class="danger" onclick="document.getElementById('Modal').style.display='none';">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="cont">
+    <div class="row">
+      <div class="s12 m2 l2"></div>
+      <div class="s12 m10 l-9 ">
+        <h1>Publish</h1>
+        <div class="row">
+          <div class="group s6">
+            <input id="topic" type="text" name="text" required=" " value="<?lua local x if _M then x=_M.id..'/' else x='topic/' end return(x)?>test">
+            <label for="topic">Topic</label>
+          </div>
+          <div class="group s3">
+            <input id="value" type="text" name="text" required=" " value="12345">
+            <label for="value">Value</label>
+          </div>
+          <div class="group s2">
+            <button class="grey" id="btn_one" <?lua local x if _M then x='' else x='disabled' end return(x)?>  onclick="publish();">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  //= template/footer.html
+
+  <script>
+    function logout() {
+      document.cookie = "id=";
+      location.href = '/login.html';
+    }
+
+    function send(page, data, callback) {
+      var req = new XMLHttpRequest();
+      req.open("POST", page, true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.addEventListener("load", function() {
+        if (req.status < 400) {
+          callback(req.responseText);
+        } else {
+          callback(false);
+        }
+      });
+      req.send(JSON.stringify(data));
+    }
+
+    function publish() {
+      var topic = document.getElementById("topic").value;
+      var value = document.getElementById("value").value;
+      console.log(topic);
+      console.log(value);
+      send("MQTT_pub.lua", {
+        "topic": topic,
+        "value": value
+      }, function(res) {
+        if (res) {
+          console.log(res);
+        }
+      });
+    }
+
+  </script>
+</body>
+
+</html>

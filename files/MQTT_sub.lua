@@ -1,8 +1,1 @@
-return function (t)
- local n,f
- for k,v in pairs(file.list())do
-  if k:match("(.*).mqtt")then n,f=pcall(dofile(k),t)end
- end
- return f
-end
-
+return function(a)local b,c;for d,e in pairs(file.list())do if d:match("(.*).mqtt")then b,c=pcall(dofile(d),a)end end;return f end

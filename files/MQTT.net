@@ -1,9 +1,1 @@
-return function (t)
- if t.run and not _M then
-  _M=t
-  _M.id = "DoT-"..string.format("%x",node.chipid()*256):sub(0,6):upper()
-  _M.topic = "/".._M.id.."/"
-  dofile("MQTT.lua")({init=true})
- end 
- return t.run
-end
+return function(a)if a.run and not _M then _M=a;_M.id="DoT-"..string.format("%x",node.chipid()*256):sub(0,6):upper()_M.topic="/".._M.id.."/"dofile("MQTT.lua")({init=true})end;return a.run end

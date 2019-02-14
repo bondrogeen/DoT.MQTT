@@ -1,7 +1,1 @@
-return function (t)
- print(t.topic)
- if t and _M then
- _M:pub(t.topic,t.value,true)
- end
- return r
-end
+return function(a)print(a.topic)if a and _M then _M:pub(a.topic,a.value,true)end;return r end

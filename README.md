@@ -2,50 +2,32 @@
 
  MQTT plugin for [DoT](https://github.com/bondrogeen/DoT)
 
-or run manual
-
-```lua
-
-_M={
-  server="192.168.1.10",  
-  port=1883,              
-  login="admin",                   -- optional, def ""
-  pass="pass",                     -- optional, def ""
-  id="myDevice",                   -- optional, def "ESPXXXXXX"
-  topic="/myFirstTopic/"           -- start topic. optional, def "/ESPXXXXXX/"
-}
-
-function _M.on(c)                  --callback when connecting
- print("Connected")
- c:subscribe(_M.topic.."*",0)  
- 
- _M:pub("topic/test","1234")       -- topic "/ESPXXXXXX/topic/test" | value "1234"
- _M:pub("topic/test","1234",true)  -- topic "/topic/test" | value "1234"
-end
-
-function _M.off(c,r)               -- callback when disconnecting
- print("Disconnected")
-end
-
-function _M.mes(c,t,d)             -- callback message
- if d then
-  print(t..":"..d)
- end
-end
-
-dofile("MQTT.lua")({init=true})    -- initialization MQTT (autoconnect) 
-
--- dofile("MQTT.lua")({con=false}) -- Disconnect
-
--- dofile("MQTT.lua")({con=true})  -- Connect
 
 
-```
+## Contributing
+Contributions are welcome.
 
+The package is made up of 2 main folders:
+
+- /src (Source files)
+- /files (Compiled and compressed files)
+
+To setup and run a local copy:
+1. Clone this repo with `git clone https://github.com/bondrogeen/Template`
+2. Run `npm install` in root folder
+
+After installing the dependencies, you can start working with the sources.
+
+3. Run `gilp build` (Compile and compress files)
+
+When you're done working on your changes, submit a PR with the details and include a 
+screenshot if you've changed anything visually.
 
 
 ## Changelog
 
+### 0.2.0 (2019-02-14)
+* (bondrogeen) minor fix.
 ### 0.1.5 (2018-12-04)
 * (bondrogeen) minor fix.
 ### 0.1.0 (2018-06-19)
