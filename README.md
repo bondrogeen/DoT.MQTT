@@ -26,6 +26,8 @@ screenshot if you've changed anything visually.
 
 ## Changelog
 
+### 0.2.1 (2019-02-25)
+* (bondrogeen) fix subsrcib topic.
 ### 0.2.0 (2019-02-14)
 * (bondrogeen) minor fix.
 ### 0.1.5 (2018-12-04)

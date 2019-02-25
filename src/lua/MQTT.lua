@@ -1,9 +1,9 @@
 local function callbackConn(client)
   _M.start=true
   _M.recon:stop()
---   print("Connected")
-  client:subscribe( _M.topic.."#/comm", 0, function(client)
-  --  print("subscribe success")
+   print("Connected")
+  client:subscribe( _M.topic.."+/comm/#", 0, function(client)
+--    print("subscribe success")
   end)
   dofile("MQTT_sub.lua")(_M.timer)
 end
@@ -27,7 +27,7 @@ end
 
 local function init()
   _M.id = _M.id or "DoT-"..string.format("%x", node.chipid()*256):sub(0,6):upper()
-  _M.topic = _M.topic or "/".._M.id.."/"
+  _M.topic = _M.topic or _M.id.."/"
   _M.mqtt = mqtt.Client(_M.id, 120, _M.login or "", _M.pass or "")
 
   function _M:pub(topic, value, start)
@@ -37,7 +37,7 @@ local function init()
   end
 
   _M.recon=tmr.create()
-  _M.recon:register(5000, tmr.ALARM_AUTO, function(t)
+  _M.recon:register(10000, tmr.ALARM_AUTO, function(t)
     dofile("MQTT.lua")({conn=true})
   end)
 

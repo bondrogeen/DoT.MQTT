@@ -2,7 +2,7 @@
  "name": "MQTT",
  "type": "plugin",
  "description": "MQTT for DoT",
- "version": "0.2.0",
+ "version": "0.2.1",
  "homepage": "",
  "files": ["MQTT.init", "MQTT.info", "MQTT.lua", "MQTT_mes.lua", "MQTT_sub.lua", "MQTT_pub.lua", "MQTT.net", "MQTT.html","MQTT_mes.lua","MQTT_sub.lua","MQTT.js"],
  "page": "MQTT.html",

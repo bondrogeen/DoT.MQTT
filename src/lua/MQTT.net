@@ -2,7 +2,6 @@ return function (tab)
  if tab.run and not _M then
   _M = tab
   _M.id = "DoT-"..string.format("%x", node.chipid() * 256):sub(0, 6):upper()
-  _M.topic = "/".._M.id.."/"
   dofile("MQTT.lua")({init=true})
  end 
  return tab.run
