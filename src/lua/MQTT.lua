@@ -2,7 +2,7 @@ local function callbackConn(client)
   _M.start=true
   _M.recon:stop()
 --   print("Connected")
-  client:subscribe( _M.topic.."*/comm", 0, function(client)
+  client:subscribe( _M.topic.."#/comm", 0, function(client)
   --  print("subscribe success")
   end)
   dofile("MQTT_sub.lua")(_M.timer)
